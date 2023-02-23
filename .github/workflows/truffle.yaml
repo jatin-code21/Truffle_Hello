@@ -1,0 +1,27 @@
+name: Deploy Ethereum Smart Contract
+'on':
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14.x
+      - name: Install Truffle
+        run: npm install -g truffle
+      - name: Install dependencies
+        run: npm install
+      - name: Compile smart contract
+        run: truffle compile
+      - name: Deploy smart contract
+        run: |
+          truffle migrate --network <network-name>
+    env:
+      ETHEREUM_PRIVATE_KEY: '${{ secrets.ETHEREUM_PRIVATE_KEY }}'
+      <network-name>_URL: '${{ secrets.https://goerli.infura.io/v3/b4b06ee178cd413db15e4a6bcee68fab }}'
