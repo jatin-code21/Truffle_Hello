@@ -24,4 +24,4 @@ jobs:
           truffle migrate --network goerli
     env:
       ETHEREUM_PRIVATE_KEY: '${{ secrets.ETHEREUM_PRIVATE_KEY }}'
-      goerli_URL: '${{ secrets.https://goerli.infura.io/v3/b4b06ee178cd413db15e4a6bcee68fab }}'
+      goerli_URL: '${{ secrets.URL }}'
